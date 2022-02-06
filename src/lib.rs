@@ -8,4 +8,4 @@ pub mod error;
 mod filters;
 mod filtering;
 pub mod samplerate;
-mod sample;
+pub mod sample;

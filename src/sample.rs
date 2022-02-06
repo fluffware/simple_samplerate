@@ -1,8 +1,13 @@
+
+/// Trait for numeric type that can be used for sample values
 pub trait Sample
 {
+    /// Sample value that corresponds to signal center
     const OFFSET: Self;
-    fn normailze(self) -> f32; // Scale the sample to the range [-1.0,1.0]
-    fn full(s: f32) -> Self; // Scale the range [-1.0,1.0] to the full range of the type
+    /// Scale the sample to the range [-1.0,1.0]
+    fn normailze(self) -> f32;
+    /// Scale the range [-1.0,1.0] to the full range of the type
+    fn full(s: f32) -> Self; 
 }
 
 impl Sample for i16
