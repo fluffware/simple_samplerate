@@ -1,0 +1,3 @@
+This is a small Rust only library for samplerate conversion.
+Resampling is done done using a precalculated sinc filter.
+Samples are fed to the converter block by block so it's suitable for streaming.
