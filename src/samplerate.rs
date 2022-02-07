@@ -15,7 +15,6 @@ pub struct Samplerate<I> {
     overlap: Vec<I>,
     filter_offset: usize,
 }
-use num::integer::gcd;
 
 impl<I> Samplerate<I>
 where
@@ -26,8 +25,7 @@ where
     /// There is no low pass filtering so there may be aliasing when
     /// downsampling.
     pub fn new(from_rate: u32, to_rate: u32, channels: usize) -> Result<Samplerate<I>, Error> {
-        let filter_count = (to_rate / gcd(from_rate, to_rate)) as usize;
-        let filters = filters::build_sinc(8, filter_count);
+        let filters = filters::build_sinc(8, from_rate, to_rate);
         Ok(Self::from_filters(
             filters, 8, 3, from_rate, to_rate, channels,
         ))
